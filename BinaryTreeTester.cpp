@@ -28,17 +28,9 @@ bool checkTest(std::string testName, int whatItShouldBe, int whatItIs) {
     if (whatItShouldBe == whatItIs) {
         std::cout << "Passed " << testName << std::endl;
         return true;
-    } else {
-        std::cout << "***Failed test " << testName << " *** " << std::endl << "
-        Output
-        was
-        " << whatItIs << std::endl << "
-        Output
-        should
-        have
-        been
-        " <<
-        whatItShouldBe << std::endl;
+    }
+    else {
+        std::cout << "***Failed test " << testName << " *** " << std::endl << "Output was " << whatItIs << std::endl << "   Output should have been " << whatItShouldBe << std::endl;
         return false;
     }
 }

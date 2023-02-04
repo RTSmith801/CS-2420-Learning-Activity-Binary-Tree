@@ -40,6 +40,9 @@ private:
     //helper methods for recurrsion
     void destroy(Node<Type> *curr);
     void insert(Type item, Node<Type> *curr);
+    void preOrder(Node<Type> *curr);
+    void inOrder(Node<Type> *curr);
+    void postOrder(Node<Type> *curr);
 };
 
 template <class Type>
@@ -103,6 +106,47 @@ void BTree<Type>::insert(Type item, Node<Type> * curr){
         }//ends inner if
     }
 }//ends insert
+
+template <class Type>
+void BTree<Type>::preOrder() {
+    std::cout << "Pre Order: ";
+    preOrder(root);
+}
+
+template <class Type>
+void BTree<Type>::preOrder(Node<Type> *curr) {
+    if(curr){
+        std::cout << curr->item << " ";
+        preOrder(curr->left);
+        preOrder(curr->right);
+    }
+}
+
+template <class Type>
+void BTree<Type>::inOrder() {
+    std::cout << "In Order: ";
+    inOrder(root);
+}
+
+template <class Type>
+void BTree<Type>::inOrder(Node<Type> *curr) {
+    inOrder(curr->left);
+    std::cout << curr->item << " ";
+    inOrder(curr->right);
+}
+
+template <class Type>
+void BTree<Type>::postOrder() {
+    std::cout << "Post Order: ";
+    postOrder(root);
+}
+
+template <class Type>
+void BTree<Type>::postOrder(Node<Type> *curr) {
+    postOrder(curr->left);
+    postOrder(curr->right);
+    std::cout << curr->item << " ";
+}
 
 
 #endif //INC_06_LEARNING_ACTIVITY_BINARY_TREE_BTREE_H
