@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "06_Learning_Activity_Binary_Tree::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-06_Learning_Activity_Binary_Tree-Debug-a36f020bbb9fb7ab90ad.json",
+					"jsonFile" : "target-06_Learning_Activity_Binary_Tree-Debug-993a53ad0b38817e3f25.json",
 					"name" : "06_Learning_Activity_Binary_Tree",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "Z:/Desktop/Weber State Univesity/Classes/CS 2420/Assignments/06 Learning Activity Binary Tree/cmake-build-debug",
-		"source" : "Z:/Desktop/Weber State Univesity/Classes/CS 2420/Assignments/06 Learning Activity Binary Tree"
+		"build" : "D:/Desktop/Weber State/06-Learning-Activity-Binary-Tree/cmake-build-debug",
+		"source" : "D:/Desktop/Weber State/06-Learning-Activity-Binary-Tree"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 4
 	}
 }

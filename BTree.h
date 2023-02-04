@@ -43,6 +43,7 @@ private:
     void preOrder(Node<Type> *curr);
     void inOrder(Node<Type> *curr);
     void postOrder(Node<Type> *curr);
+    int nodeCount(Node<Type> *curr);
 };
 
 template <class Type>
@@ -62,7 +63,6 @@ void BTree<Type>::destroy(Node<Type> * curr){
         destroy(curr->right);
         delete curr;
     }
-    //delete curr here?
 }
 
 template <class Type>
@@ -93,7 +93,7 @@ void BTree<Type>::insert(Type item, Node<Type> * curr){
             insert(item, curr->left);
         }//ends inner if
     }//ends outer if
-    else{
+    else{ //item > curr->item
         if(curr->right == nullptr) {
             auto tmp = new Node<Type>;
             tmp->item = item;
@@ -130,9 +130,11 @@ void BTree<Type>::inOrder() {
 
 template <class Type>
 void BTree<Type>::inOrder(Node<Type> *curr) {
-    inOrder(curr->left);
-    std::cout << curr->item << " ";
-    inOrder(curr->right);
+    if(curr) {
+        inOrder(curr->left);
+        std::cout << curr->item << " ";
+        inOrder(curr->right);
+    }
 }
 
 template <class Type>
@@ -143,9 +145,24 @@ void BTree<Type>::postOrder() {
 
 template <class Type>
 void BTree<Type>::postOrder(Node<Type> *curr) {
-    postOrder(curr->left);
-    postOrder(curr->right);
-    std::cout << curr->item << " ";
+    if(curr) {
+        postOrder(curr->left);
+        postOrder(curr->right);
+        std::cout << curr->item << " ";
+    }
+}
+
+template <class Type>
+int BTree<Type>::nodeCount(){
+    return nodeCount(root);
+}
+
+template <class Type>
+int BTree<Type>::nodeCount(Node<Type> *curr){
+    if(curr){
+        return 1 + nodeCount(curr->left) + nodeCount(curr->right);
+    }
+    return 0;
 }
 
 
