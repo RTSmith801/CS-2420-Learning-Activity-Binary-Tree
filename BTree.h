@@ -24,10 +24,10 @@ class BTree{
 public:
 
     BTree(); //Constructor: Creates an empty tree
-    BTree(const BTree&); //Constructor: Creates a copy of a tree
-    BTree& operator=(const BTree&); //Overaloaded assignment operator. Copies the BTree
-    ~BTree(); //Destructor: Deallocates memory
-    void insert(Type data); //Inserts a node into the tree
+    BTree(const BTree<Type>&); //Constructor: Creates a copy of a tree
+    BTree<Type> operator=(const BTree<Type>&); //Overloaded assignment operator. Copies the BTree
+    ~BTree(); //Dest     void preOrder(); //Displays a pre-order traversal of the tree
+    void insert(Type item); //Inserts a node into the tree
     void preOrder(); //Displays a pre-order traversal of the tree
     void inOrder(); //Displays an in-order traversal of the tree
     void postOrder(); //Displays a post-order traversal of the tree
@@ -38,6 +38,7 @@ protected:
 
 private:
     //helper methods for recurrsion
+    void copyTree(Node<Type> *curr);
     void destroy(Node<Type> *curr);
     void insert(Type item, Node<Type> *curr);
     void preOrder(Node<Type> *curr);
@@ -49,6 +50,26 @@ private:
 template <class Type>
 BTree<Type>::BTree(){
     root = nullptr;
+}
+
+template <class Type>
+BTree<Type>::BTree(const BTree<Type>&b){
+    copyTree(b.root);
+}
+
+template <class Type>
+BTree<Type> BTree<Type>::operator=(const BTree<Type>&b){
+    copytree(b.root);
+    return *this;
+}
+
+template <class Type>
+void BTree<Type>::copyTree (Node<Type>*curr) {
+    if(curr){
+        insert(curr->item);
+        copyTree(curr->left);
+        copyTree(curr->right);
+    }
 }
 
 template <class Type>
